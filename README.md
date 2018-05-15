@@ -4,7 +4,7 @@
    <a href="https://www.npmjs.com/package/vue"><img src="https://img.shields.io/npm/v/vue.svg" alt="Version"></a>
    <a href="https://www.npmjs.com/package/vue"><img src="https://img.shields.io/npm/l/vue.svg" alt="License"></a>
 </p> -->
-# 量加选股工具（H5/小程序）
+# 选股机器人（H5/小程序）
 
 **A Vue + Mpvue Project**
 > [Vue](https://cn.vuejs.org/) 是一套用于构建用户界面的渐进式框架。`Vue` 的核心库只关注视图层，不仅易于上手，还便于与第三方库或既有项目整合。另一方面，当与现代化的工具链以及各种支持类库结合使用时，`Vue` 也完全能够为复杂的单页应用提供驱动。
@@ -44,7 +44,7 @@ npm run build --report
 
 ## Contribution
 
-[TingjianZhao](http://192.168.1.99/u/zhaotingjian123)
+[TingjianZhao](https://github.com/zz570557024)
 
 ## License
 
