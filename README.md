@@ -45,8 +45,8 @@ npm run build --report
 * 支持使用 npm 外部依赖
 
 ## 截图
-- ![对话聊天](./static/res/readmeImg/demo_2.png)
-- ![股票详情](./static/res/readmeImg/demo_1.png)
+
+![对话聊天](./static/res/readmeImg/demo_2.png) ![股票详情](./static/res/readmeImg/demo_1.png)
 
 ## Contribution
 
