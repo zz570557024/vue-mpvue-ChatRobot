@@ -44,7 +44,7 @@ npm run build --report
 
 ## Contribution
 
-[TingjianZhao](https://github.com/zz570557024)
+[RuShi](https://github.com/zz570557024)
 
 ## License
 
