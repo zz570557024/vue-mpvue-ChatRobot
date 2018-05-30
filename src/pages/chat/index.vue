@@ -16,14 +16,12 @@
                 <div class="chat_li" v-for="(item,index) in chatList" :key="index">
                     <div class="chat_time">{{item.dateTime}}</div>
                     <div class="chat_word chat_qus" v-if="item.position=='right'">
-                        <!-- <div class="chat-img userinfo-avatar">😍</div> -->
-                        <img class="chat-img userinfo-avatar" src="./../../../static/res/img/xiaogua.png" alt="userLogo">
+                        <img class="chat-img userinfo-avatar" src="./../../../static/res/img/head_2.jpg" alt="userLogo">
                         <div class="chat_say">
                             <div class="chat_txt">{{item.word}}</div>
                         </div>
                     </div>
                     <div class="chat_word" v-if="item.position=='left'&&item.word.type=='sentence'">
-                        <!-- <div class="chat-img userinfo-avatar">😝</div> -->
                         <img class="chat-img userinfo-avatar" src="./../../../static/res/img/xiaogua.jpg" alt="liangLogo">
                         <div class="chat_say">
                             <div class="chat_txt">{{item.word.answer}}</div>
@@ -34,14 +32,13 @@
                         </div>
                     </div>
                     <div class="chat_word" v-if="item.position=='left'&&item.word.type=='label'">
-                        <!-- <div class="chat-img userinfo-avatar">😡</div> -->
                         <img class="chat-img userinfo-avatar" src="./../../../static/res/img/xiaogua.jpg" alt="liangLogo">
                         <div class="chat_say">
                             <div class="chat_list" v-for="($item,$index) in item.word.answer" :key="$index">
-                                <div @click="getDetail($item)">
+                                <div @click="getStockMsg($item)" :class="{'font_red': $item.inc>=0,'font_green': $item.inc<0}">
                                     <div class="label_name">{{$item.name}} （{{$item.code}}）</div>
                                     <span class="label_price">{{$item.price}}</span>
-                                    <span class="label_inc">{{$item.inc}} {{$item.inc_value}}</span>
+                                    <span class="label_inc">{{$item.inc}}% - {{$item.inc_value}}</span>
                                 </div>
                             </div>
                             <div class="chat_attitude">
@@ -51,7 +48,6 @@
                         </div>
                     </div>
                     <div class="chat_word" v-if="item.position=='left'&&item.word.type=='form'">
-                        <!-- <div class="chat-img userinfo-avatar">🐷</div> -->
                         <img class="chat-img userinfo-avatar" src="./../../../static/res/img/xiaogua.jpg" alt="liangLogo">
                         <div class="chat_say">
                             <div class="chat_list" v-if="item.word.answer.length != 0">
@@ -59,22 +55,27 @@
                                     <span class="flex-cell flex-row item">股票名称</span>
                                     <span class="flex-cell flex-row item">最新价</span>
                                     <span class="flex-cell flex-row item">涨跌幅</span>
-                                    <span class="flex-cell flex-row item" v-if="item.word.answer[0].indication">{{item.word.answer[0].indication_name}}</span>
-                                    <span class="flex-cell flex-row item" v-if="item.word.answer[0].block">板块概念</span>
+                                    <div class="flex-cell flex-row" v-if="item.word.indication_name.length>0" v-for="($item,$index) in item.word.indication_name" :key="$index">
+                                        <span class="flex-cell flex-row item">{{$item}}</span>
+                                    </div>
+                                    <span class="flex-cell flex-row item" v-if="item.word.block_name.length>0">板块概念</span>
                                 </div>
                                 <div v-for="($item,$index) in item.word.answer" :key="$index">
                                     <div @click="getDetail($item)">
                                         <div class="flex-cell flex-row" :class="{'font_red': $item.inc>=0,'font_green': $item.inc<0}">
-                                            <span class="flex-cell flex-row item" v-if="$item.name">{{$item.name}}</span>
-                                            <span class="flex-cell flex-row item" v-if="$item.price">{{$item.price}}</span>
-                                            <span class="flex-cell flex-row item" v-if="$item.inc">{{$item.inc}}</span>
-                                            <span class="flex-cell flex-row item" v-if="$item.indication">{{$item.indication}}</span>
-                                            <span class="flex-cell flex-row item" v-if="$item.block">{{$item.block}}</span>
+                                            <span class="flex-cell flex-row item">{{$item.name}}</span>
+                                            <span class="flex-cell flex-row item">{{$item.price}}</span>
+                                            <span class="flex-cell flex-row item">{{$item.inc}}</span>
+                                            <div class="flex-cell flex-row" v-if="item.word.indication_name.length>0" v-for="($$item,$$index) in $item.indication_value" :key="$$index">
+                                                <span class="flex-cell flex-row item">{{$$item|money}}</span>
+                                            </div>
+                                            <span class="flex-cell flex-row item" v-if="item.word.block_name.length>0">{{item.word.block_name[0]}}</span>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="more_message">
-                                    <a :href="router + '/pages/stockList/main'" style="color:#000;text-decoration:none">更多股票信息</a>
+                                    <!-- <a :href="router + '/pages/stockList/main'" style="color:#000;text-decoration:none">更多股票信息</a> -->
+                                    <div @click="moreStock(index)" style="color:#000;text-decoration:none">更多相关股票</div>
                                 </div>
                             </div>
                             <div class="chat_say" v-else>
@@ -127,7 +128,7 @@ export default {
             isInput: true,
             qusList: [],
             sendBtn: false,
-            isQusList: true
+            isQusList: true,
         }
     },
     methods: {
@@ -165,7 +166,7 @@ export default {
             setTimeout(() => {
                 this.getQuestion()
                 this.autoReload()
-            }, 10000)
+            }, 20000)
         },
         getUserInfo () {
             this.service.getUserInfo().then(data => {
@@ -185,6 +186,10 @@ export default {
             store.commit('stockDetail', item)
             this.service.navigatePageTo(this.router + '/pages/chatDetail/main')
         },
+        getStockMsg (item) {
+            store.commit('stockDetail', item)
+            this.service.navigatePageTo(this.router + '/pages/stockDetail/main')
+        },
         qusCtx (ctx) {
             if (ctx != '') {
                 this.sendBtn = true;
@@ -201,6 +206,10 @@ export default {
             this.chatService.getChatEvaluation(this.service, data).then(data => {
                 alert('反馈成功')
             })
+        },
+        moreStock (index) {
+            let qus = this.chatList[index - 1].word;
+            this.service.navigatePageTo(this.router + '/pages/stockList/main?qus=' + qus)
         },
         upload (event) {
             console.log('record', event)
@@ -273,6 +282,8 @@ export default {
   text-align: center;
   position: relative;
   top: 0;
+  width: 60%;
+  font-size: 14px;
 }
 .title {
   color: red;
@@ -314,7 +325,7 @@ export default {
   height: 38px;
   margin-right: 0px;
   line-height: 36px;
-  background-color: #228b22;
+  background-color: #ff6347;
   color: #fff;
   border-radius: 10px;
 }
@@ -364,7 +375,7 @@ export default {
   margin-left: 16px;
   margin-right: 16px;
   max-width: 250px;
-  background: #9fe658;
+  background: #ffb6c1;
   padding: 11px;
   border: 1px solid #d9d9d9;
   border-radius: 8px;
@@ -384,7 +395,7 @@ export default {
   color: #333;
   line-height: 21px;
   word-break: break-all;
-  width: 95%;
+  width: 85%;
 }
 button {
   font-size: 14px;
@@ -439,7 +450,6 @@ button {
 }
 .label_price {
   font-size: 20px;
-  color: red;
   margin-right: 20px;
 }
 .chat_time {

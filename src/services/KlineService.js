@@ -146,4 +146,50 @@ export default class Kline {
     }
     return service.httpRequest(option)
   }
+  //个股简况
+  getStockSummary(service, data = {}) {
+    var option = {
+      url: '/api/stockInformationAPI/stockSummary',
+      methods: 'POST',
+      data: {
+        code: data.code
+      }
+    }
+    return service.httpRequest(option)
+  }
+  //个股资金流向
+  getCapitalFlows(service, data = {}) {
+    var option = {
+      url: '/api/external/capitalFlows/' + data.code,
+      methods: 'GET'
+    }
+    return service.httpRequest(option)
+  }
+  //个股资金五日流向
+  getCapitalFlowsMain(service, data = {}) {
+    var option = {
+      url: '/api/external/capitalFlowsMain/' + data.code,
+      methods: 'GET'
+    }
+    return service.httpRequest(option)
+  }
+  /**
+   * 相似K线
+   * @param {14901=个股；14902=指数；14903=行业；14904=概念} stkTyp 
+   * @param {daily=日；week=周；month=月} KTyp 
+   * @param {交易日 例如要获取和最近30个交易日相似的K线数据，则该参数=30} trdDyNum
+   */
+  getSimilarKLine(service, data = {}) {
+    var option = {
+      url: '/api/v3.2/external/similarKLine',
+      methods: 'GET',
+      data: {
+        code: data.code,
+        stkTyp: data.stkTyp || 14901,
+        KTyp: data.KTyp || 'daily',
+        trdDyNum: data.trdDyNum || 30
+      }
+    }
+    return service.httpRequest(option)
+  }
 }

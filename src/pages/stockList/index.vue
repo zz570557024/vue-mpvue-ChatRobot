@@ -1,56 +1,77 @@
 <template>
     <div>
+        <div class="header">
+            <h1 class="title_list">{{word.substring(0, 20)}}</h1>
+        </div>
         <div class='flex-cell flex-row list_title'>
             <div class='flex-cell flex-row'>股票名称(代码)</div>
             <div class='flex-cell flex-row'>最新价</div>
-            <div class='flex-cell flex-row' @click="listSort">涨跌幅
-                <span v-if="param.sort==2">▲</span>
-                <span v-else>▼</span>
+            <div class='flex-cell flex-row'>涨跌幅</div>
+            <div class="flex-cell flex-row" v-if="stockMsg.indication_name.length>0" v-for="(item,index) in stockMsg.indication_name" :key="index">
+                <span class="flex-cell flex-row">{{item}}</span>
             </div>
+            <div class="flex-cell flex-row" v-if="stockMsg.block_name.length>0">板块概念</div>
         </div>
-        <scroller :on-refresh="refresh" :on-infinite="infinite" style="margin-top: 50px;">
+        <scroller :on-refresh="refresh" :on-infinite="infinite" style="top: auto;word-break: break-all;" ref="scrollerVM">
             <transition-group name="stockList" tag="p">
-                <div class='flex-cell flex-row list_ctx' v-for="(item, index) in stockList" :key="index" @click="getDetail(item)" v-if="isList">
-                    <div class='flex-cell flex-row'>{{item.name}}<br>（{{item.tick}}）</div>
+                <div class='flex-cell flex-row list_ctx' v-for="(item, index) in stockList" :key="index" @click="getDetail(item)" v-if="isList" :class="{'font_red': item.inc>=0,'font_green': item.inc<0}">
+                    <div class='flex-cell flex-row'>{{item.name}}<br>（{{item.code}}）</div>
                     <div class='flex-cell flex-row fb'>{{item.price}}</div>
-                    <div class='flex-cell flex-row' :class="{'font_red': item.ratio>=0,'font_green': item.ratio<0}">{{item.ratio}}</div>
+                    <div class='flex-cell flex-row'>{{item.inc}}</div>
+                    <div class="flex-cell flex-row" v-if="stockMsg.indication_name.length>0" v-for="($item,$index) in item.indication_value" :key="$index">
+                        <span class="flex-cell flex-row">{{$item|money}}</span>
+                    </div>
+                    <div class="flex-cell flex-row" v-if="stockMsg.block_name.length>0">{{stockMsg.block_name[0]}}</div>
                 </div>
             </transition-group>
         </scroller>
     </div>
 </template>
 <script>
+import Chat from '../../services/chatService'
 import Kline from '../../services/KlineService'
 import store from '../../vuex/store'
-// import VueScroller from 'vue-scroller'
-// Vue.use(VueScroller)
+import VueScroller from 'vue-scroller'
+Vue.use(VueScroller)
 export default {
     data () {
         return {
             KlineService: new Kline,
+            chatService: new Chat,
             param: {
                 type: '14901',
                 sort: 2,
                 size: 20
             },
             stockList: [],
-            isList: true
+            isList: true,
+            word: this.$route.query.qus,
+            stockMsg: {
+                indication_name: [],
+                block_name: []
+            }
         }
     },
     methods: {
         init () {
-            this.KlineService.stockRatioRanking(this.service, this.param).then(data => {
-                this.stockList = data.data.message;
+            // this.KlineService.stockRatioRanking(this.service, this.param).then(data => {
+            //     this.stockList = data.data.message;
+            //     this.isList = true;
+            //     this.service.scrollTop();
+            // })
+            this.pythonList()
+        },
+        async pythonList () {
+            await this.chatService.getChatAnswer(this.service, this.word, 1, this.param.size).then(data => {
+                this.stockList = data.data.answer;
+                this.stockMsg = data.data;
                 this.isList = true;
-                this.service.scrollTop();
-            }).catch(err => {
-                console.log('接口错误', err)
             })
         },
         getDetail (item) {
             let stock = {
                 name: item.name,
-                code: item.tick
+                code: item.code
             }
             store.commit('stockDetail', stock)
             this.service.navigatePageTo(this.router + '/pages/chatDetail/main')
@@ -62,23 +83,51 @@ export default {
             this.init();
         },
         infinite (done) {
-            this.param.size = this.param.size + 5;
-            this.init();
-            done()
+            this.param.size = this.param.size + 10;
+            this.pythonList().then(data => {
+                if (this.param.size > this.stockList.length) {
+                    done(true)
+                } else {
+                    done()
+                }
+            }).catch(err => {
+                done(true)
+            })
+
         },
         refresh (done) {
             this.param.size = 20;
-            this.init();
-            done()
+            this.pythonList().then(data => {
+                done()
+                this.$refs.scrollerVM.finishInfinite()
+            }).catch(err => {
+                done(true)
+            })
         }
     },
     created () {
-        this.init()
+        this.pythonList();
+        this.service.scrollTop();
     }
 
 }
 </script>
 <style>
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+  z-index: 1000;
+  color: #666;
+}
+.header > .title_list {
+  font-size: 16px;
+  line-height: 44px;
+  text-align: center;
+  margin: 0 auto;
+}
 .stockList-item {
   display: inline-block;
   margin-right: 10px;
@@ -110,6 +159,10 @@ export default {
   border-bottom: 1px solid #999;
   padding: 10px 5px;
   font-size: 14px;
+  margin-top: 45px;
+  background-color: #fff;
+  position: relative;
+  z-index: 1;
 }
 .list_ctx {
   padding: 5px 5px;

@@ -31,10 +31,10 @@
                 <span class="flex-cell flex-row item">总市值</span>
             </div>
             <div class="flex-cell flex-row item fb_5">
-                <span class="flex-cell flex-row item">{{iTurnover}}</span>
-                <span class="flex-cell flex-row item">{{tun}}</span>
-                <span class="flex-cell flex-row item">{{pe}}</span>
-                <span class="flex-cell flex-row item">{{mktc}}</span>
+                <span class="flex-cell flex-row item">{{stock.iTurnover|formatVolumn}}</span>
+                <span class="flex-cell flex-row item">{{stock.tun|formatSyl}}</span>
+                <span class="flex-cell flex-row item">{{stock.pe|formatSyl}}</span>
+                <span class="flex-cell flex-row item">{{stock.mktc|formatVolumn}}</span>
             </div>
             <transition name="fade">
                 <div v-if="detailShow">
@@ -46,8 +46,8 @@
                     </div>
                     <div class="flex-cell flex-row item fb_5">
                         <span class="flex-cell flex-row item">{{stock.amplitude}}</span>
-                        <span class="flex-cell flex-row item">{{total}}</span>
-                        <span class="flex-cell flex-row item">{{ps}}</span>
+                        <span class="flex-cell flex-row item">{{stock.total|formatVolumn}}</span>
+                        <span class="flex-cell flex-row item">{{stock.ps|formatSyl}}</span>
                         <span class="flex-cell flex-row item">{{stock.priceAvg}}</span>
                     </div>
                     <div class="flex-cell flex-row item font_gray">
@@ -57,10 +57,10 @@
                         <span class="flex-cell flex-row item">流通市值</span>
                     </div>
                     <div class="flex-cell flex-row item fb_5">
-                        <span class="flex-cell flex-row item">{{ivolume}}</span>
+                        <span class="flex-cell flex-row item">{{stock.ivolume|formatVolumn}}</span>
                         <span class="flex-cell flex-row item">{{stock.high}}</span>
                         <span class="flex-cell flex-row item">{{stock.low}}</span>
-                        <span class="flex-cell flex-row item">{{tfc}}</span>
+                        <span class="flex-cell flex-row item">{{stock.tfc|formatVolumn}}</span>
                     </div>
                 </div>
             </transition>
@@ -86,24 +86,56 @@
             <div v-show="!canvas&&KlineTab==3" id="mouthChart" :style="'width:'+screenWidth+'px;height:'+screenHeigth+'px'"></div>
             <div v-show="!canvas&&KlineTab==4" id="fiveDayChart" :style="'width:'+screenWidth+'px;height:'+screenHeigth+'px'"></div>
         </div>
+        <div class="circle" @click="getStockMsg">
+            <div class="circle_txt">相似 K 线</div>
+        </div>
         <div class="container news_List">
             <div class="tab_title fb">
                 <div :class="lineNum==0?'tabselected':'tab'" @click="getNews(0)">新闻</div>
+                <div :class="lineNum==4?'tabselected':'tab'" @click="getNews(4)">资金</div>
                 <div :class="lineNum==1?'tabselected':'tab'" @click="getNews(1)">公告</div>
                 <div :class="lineNum==2?'tabselected':'tab'" @click="getNews(2)">研报</div>
+                <div :class="lineNum==3?'tabselected':'tab'" @click="getNews(3)">简况</div>
             </div>
-            <div v-if="news && news.length == 0" class="news-none">
-                暂无相关内容
-            </div>
-            <div v-else class="news-list">
-                <div class="list" ref="newsList">
-                    <div class="list-item" v-for="(item, index) in news" :key="index" v-if="type==='A'" @click="newsDetail(item)">
-                        <span class="item-title" :style="{width: newsTitle}">{{item.title}}</span>
-                        <div v-if="item.pic" class="image-wrapper">
-                            <img class="item-image" :src="item.pic" :alt="item.title">
+            <div v-if="lineNum==0||lineNum==1||lineNum==2">
+                <div v-if="news && news.length == 0" class="news-none">
+                    暂无相关内容
+                </div>
+                <div v-else class="news-list">
+                    <div class="list" ref="newsList">
+                        <div class="list-item" v-for="(item, index) in news" :key="index" v-if="type==='A'" @click="newsDetail(item)">
+                            <span class="item-title" :style="{width: newsTitle}">{{item.title}}</span>
+                            <div v-if="item.pic" class="image-wrapper">
+                                <img class="item-image" :src="item.pic" :alt="item.title">
+                            </div>
                         </div>
                     </div>
                 </div>
+            </div>
+            <div v-if="lineNum==3">
+                <div class="stockSummary_li">
+                    <span>公司名称</span>
+                    <span class="stockSummary_span">{{stockSummary.name}}</span>
+                </div>
+                <div class="stockSummary_li">
+                    <span>上市日期</span>
+                    <span class="stockSummary_span">{{stockSummary.ipoDate}}</span>
+                </div>
+                <div class="stockSummary_li">
+                    <span>发行价格</span>
+                    <span class="stockSummary_span">{{stockSummary.pubPrice}}</span>
+                </div>
+                <div class="stockSummary_li">
+                    <span>发行数量</span>
+                    <span class="stockSummary_span">{{stockSummary.pubAmt}}</span>
+                </div>
+                <div class="stockSummary_li">
+                    <span>每手股数</span>
+                    <span class="stockSummary_span">100</span>
+                </div>
+            </div>
+            <div v-if="lineNum==4">
+                <fundCharts></fundCharts>
             </div>
         </div>
     </div>
@@ -112,9 +144,12 @@
 import Kline from '../../services/KlineService'
 import parserDate from '../../utils/stock-parser'
 import store from '../../vuex/store'
+import fundCharts from '../../components/fundCharts'
 import echarts from 'echarts'
 import Util from '../../utils/util'
 import timeDate from '../../utils/timeLineDate'
+// import VueScroller from 'vue-scroller'
+// Vue.use(VueScroller)
 
 export default {
     name: "chatDetail",
@@ -140,6 +175,11 @@ export default {
                 code: window ? window.localStorage.getItem('code') : wx.getStorageSync('code'),
                 name: window ? window.localStorage.getItem('name') : wx.getStorageSync('name')
             },
+            pageParam: {
+                code: window ? window.localStorage.getItem('code') : wx.getStorageSync('code'),
+                page: 1,
+                count: 10
+            },
             update: store.state.stock.code,
             canvas: false,
             stock: {},
@@ -151,36 +191,20 @@ export default {
             screenWidth: 0,
             screenHeigth: 0,
             newsTitle: '70%',
-            detailShow: false
+            detailShow: false,
+            stockSummary: {},
+            stockNews: [],
+            stockNotices: [],
+            stockResearch: []
         }
     },
-    computed: {
-        iTurnover () {
-            return Util.formatVolumn(this.stock.iTurnover)
-        },
-        tun () {
-            return Util.formatSyl(this.stock.tun)
-        },
-        pe () {
-            return Util.formatSyl(this.stock.pe)
-        },
-        mktc () {
-            return Util.formatVolumn(this.stock.mktc)
-        },
-        total () {
-            return Util.formatVolumn(this.stock.total)
-        },
-        ps () {
-            return Util.formatSyl(this.stock.ps)
-        },
-        ivolume () {
-            return Util.formatVolumn(this.stock.ivolume)
-        },
-        tfc () {
-            return Util.formatVolumn(this.stock.tfc)
-        }
+    components: {
+        'fundCharts': fundCharts
     },
     methods: {
+        getStockMsg () {
+            this.service.navigatePageTo(this.router + '/pages/stockDetail/main')
+        },
         async evaluated () {
             this.param.code = window ? window.localStorage.getItem('code') : wx.getStorageSync('code');
             this.param.name = window ? window.localStorage.getItem('name') : wx.getStorageSync('name');
@@ -196,26 +220,34 @@ export default {
         },
         KlineMsg () {
             //异步请求K线
-            try {
-                this.KlineService.getTimeDate(this.service, this.param).then(data => {
-                    this.echart(data, 'timeChart');
-                });
-                this.KlineService.getDailyDate(this.service, this.param).then(data => {
-                    this.echart(data, 'dailyChart');
-                });
-                this.KlineService.getWeekData(this.service, this.param).then(data => {
-                    this.echart(data, 'weekChart');
-                });
-                this.KlineService.getMouthDate(this.service, this.param).then(data => {
-                    this.echart(data, 'mouthChart');
-                });
-                this.KlineService.getFiveData(this.service, this.param).then(data => {
-                    this.echart(data, 'fiveDayChart');
-                })
-            }
-            catch (err) {
-                console.log('接口错误', err)
-            }
+            this.KlineService.getTimeDate(this.service, this.param).then(data => {
+                this.echart(data, 'timeChart');
+            });
+            this.KlineService.getDailyDate(this.service, this.param).then(data => {
+                this.echart(data, 'dailyChart');
+            });
+            this.KlineService.getWeekData(this.service, this.param).then(data => {
+                this.echart(data, 'weekChart');
+            });
+            this.KlineService.getMouthDate(this.service, this.param).then(data => {
+                this.echart(data, 'mouthChart');
+            });
+            this.KlineService.getFiveData(this.service, this.param).then(data => {
+                this.echart(data, 'fiveDayChart');
+            })
+            //异步请求资讯
+            this.KlineService.getStockNews(this.service, this.pageParam).then(data => {
+                this.stockNews = data.data.message;
+            }).catch(err => { })
+            this.KlineService.getStockNotices(this.service, this.pageParam).then(data => {
+                this.stockNotices = data.data.message;
+            }).catch(err => { })
+            this.KlineService.getResearch(this.service, this.pageParam).then(data => {
+                this.stockResearch = data.data.message;
+            }).catch(err => { })
+            this.KlineService.getStockSummary(this.service, this.param).then(data => {
+                this.stockSummary = data.data.message;
+            })
         },
         echart (data, domId) {
             if (window) {
@@ -231,11 +263,6 @@ export default {
                 }
             } else {
                 this.canvas = true;
-                // if (domId == 'timeChart' || domId == 'fiveDayChart') {
-                //     this.ec.options = timeDate.setOption(timeDate.parserData(data.data.message))
-                // } else {
-                //     this.ec.options = parserDate.methods.setOption(parserDate.methods.splitData(parserDate.methods.parseKData(data.data.message)))
-                // }
                 switch (domId) {
                     case 'timeChart':
                         this.ec.options = timeDate.setOption(timeDate.parserDataDaily(data.data.message))
@@ -261,37 +288,20 @@ export default {
             store.commit('newsDetail', item, this.lineNum)
             this.service.navigatePageTo(this.router + '/pages/newsDetail/main')
         },
-        getNews (id) {
+        async getNews (id) {
+            this.lineNum = id;
             switch (id) {
                 case 0:
-                    this.lineNum = 0;
-                    this.news = [];
-                    this.KlineService.getStockNews(this.service, this.param).then(data => {
-                        this.news = data.data.message;
-                        this.newsTitle = '70%';
-                    }).catch(err => {
-                        console.log('接口错误', err)
-                    })
+                    this.news = this.stockNews;
+                    this.newsTitle = '70%';
                     break;
                 case 1:
-                    this.lineNum = 1;
-                    this.news = [];
-                    this.KlineService.getStockNotices(this.service, this.param).then(data => {
-                        this.news = data.data.message;
-                        this.newsTitle = 'auto';
-                    }).catch(err => {
-                        console.log('接口错误', err)
-                    })
+                    this.news = this.stockNotices;
+                    this.newsTitle = 'auto';
                     break;
                 case 2:
-                    this.lineNum = 2;
-                    this.news = [];
-                    this.KlineService.getResearch(this.service, this.param).then(data => {
-                        this.news = data.data.message;
-                        this.newsTitle = 'auto';
-                    }).catch(err => {
-                        console.log('接口错误', err)
-                    })
+                    this.news = this.stockResearch;
+                    this.newsTitle = 'auto';
                     break;
                 default:
                     break;
@@ -306,7 +316,29 @@ export default {
                 this.screenHeigth = 220;
             })
             this.service.scrollTop();
-        }
+        },
+        // infinite (done) {
+        //     this.pageParam.count = this.pageParam.count + 10;
+        //     this.getNews(this.lineNum).then(data => {
+        //         if (this.pageParam.count > this.news.length) {
+        //             done(true)
+        //         } else {
+        //             done()
+        //         }
+        //     }).catch(err => {
+        //         done(true)
+        //     })
+
+        // },
+        // refresh (done) {
+        //     this.pageParam.count = 10;
+        //     this.getNews(this.lineNum).then(data => {
+        //         done()
+        //         this.$refs.scrollerVM.finishInfinite()
+        //     }).catch(err => {
+        //         done(true)
+        //     })
+        // }
     },
     mounted () {
         this.evaluated().then(data => {
@@ -342,7 +374,7 @@ ec-canvas {
 }
 .news_List {
   position: relative;
-  /* top: -130px; */
+  top: -55px;
 }
 .container {
   height: 100%;
@@ -379,10 +411,11 @@ ec-canvas {
 .tab_title {
   text-align: center;
   width: auto;
-  border: 1px solid #999;
+  border-bottom: 1px solid #999;
   padding: 5px;
-  border-radius: 10px;
   margin-bottom: 10px;
+  border-top: 1px solid #999;
+  font-family: cursive;
 }
 .tab {
   display: inline;
@@ -391,8 +424,7 @@ ec-canvas {
 .tabselected {
   display: inline;
   margin: 10px 15px;
-  color: #333;
-  border-bottom: 2px solid #999;
+  color: red;
 }
 .list {
   padding: 0;
@@ -451,6 +483,33 @@ ec-canvas {
 .stock_detail {
   width: 100%;
   text-align: center;
+}
+.stockSummary_li {
+  float: left;
+  display: block;
+  width: 100%;
+  padding: 20px;
+}
+.stockSummary_span {
+  margin-left: 20px;
+}
+.circle {
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  background: #ffb6c1;
+  /* 宽度和高度需要相等 */
+  position: relative;
+  top: -225px;
+  right: -285px;
+}
+.circle_txt {
+  color: red;
+  width: 30px;
+  position: relative;
+  left: 11px;
+  top: 5px;
+  font-size: 12px;
 }
 </style>
 

@@ -18,9 +18,9 @@ const store = new Vuex.Store({
   },
   mutations: {
     stockDetail(state, stock) {
-      state.stock.code = stock.code;
+      state.stock.code = stock.code.split('.')[0];
       state.stock.name = stock.name;
-      setStorage('code', stock.code)
+      setStorage('code', stock.code.split('.')[0])
       setStorage('name', stock.name)
     },
     newsDetail(state, news, type) {

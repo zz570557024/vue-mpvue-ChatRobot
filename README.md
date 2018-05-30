@@ -7,6 +7,8 @@
 # 选股机器人（H5/小程序）
 
 **A Vue + Mpvue Project**
+web端与小程序端开发一体化，基本实现全套代码复用。
+
 > [Vue](https://cn.vuejs.org/) 是一套用于构建用户界面的渐进式框架。`Vue` 的核心库只关注视图层，不仅易于上手，还便于与第三方库或既有项目整合。另一方面，当与现代化的工具链以及各种支持类库结合使用时，`Vue` 也完全能够为复杂的单页应用提供驱动。
 
 > [mpvue](http://mpvue.com/) 是一个使用 `Vue.js` 开发小程序的前端框架。框架基于 `Vue.js` 核心，`mpvue` 修改了 `Vue.js` 的 runtime 和 compiler 实现，使其可以运行在小程序环境中，从而为小程序开发引入了整套 `Vue.js` 开发体验。
@@ -42,6 +44,10 @@ npm run build --report
 * 快捷的 webpack 构建机制：自定义构建策略、开发阶段 hotReload
 * 支持使用 npm 外部依赖
 
+## 截图
+- ![对话聊天](./static/res/readmeImg/demo_2.png)
+- ![股票详情](./static/res/readmeImg/demo_1.png)
+
 ## Contribution
 
 [RuShi](https://github.com/zz570557024)
@@ -49,3 +55,6 @@ npm run build --report
 ## License
 
 [MIT](http://opensource.org/licenses/MIT)
+
+## P.S.
+*这个版本直接构建小程序会有一些报错，需要将报错插件移除。*

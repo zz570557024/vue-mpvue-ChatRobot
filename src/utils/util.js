@@ -48,13 +48,12 @@ export default {
       return val.toFixed(2)
     }
   },
-  autoReload() {
-    let c = 0;
-
-    function timedCount() {
-      c = c + 1;
-      setTimeout("timedCount", 1000);
-      return c;
+  //取整
+  formatVol(val) {
+    if (val == 0) {
+      return '--'
+    } else {
+      return val.toFixed(0)
     }
-  }
+  },
 }

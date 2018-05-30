@@ -1,9 +1,11 @@
 export default class Chat {
-  getChatAnswer(service, question) {
+  getChatAnswer(service, question, page, pagesize) {
     let option = {
       url: '/liang/questions/',
       data: {
-        question: question
+        question: question,
+        page: page || 1,
+        pagesize: pagesize || 10
       },
       methods: 'GET',
       type: 0

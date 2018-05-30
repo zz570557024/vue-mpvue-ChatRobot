@@ -31,7 +31,8 @@ export default {
         values: values
       };
     },
-    setOption: function (data0) {
+    setOption: function (data0, params) {
+      console.log('data0', data0)
       var upColor = '#ec0000';
       var upBorderColor = '#8A0000';
       var downColor = '#00da3c';
@@ -68,47 +69,36 @@ export default {
         }
         return data
       }
+
+      function getArrMin(arr) {
+        let min = arr[0][3];
+        for (let i = 0; i < arr.length; i++) {
+          if (arr[i][3] < min) {
+            min = arr[i][3]
+          }
+        }
+        return min
+      }
       var option = {
+        title: {
+          //   text: params.shrNm + '(' + params.shrCd + ')',
+          x: 'center',
+          top: '-15',
+          textStyle: {
+            fontSize: '14',
+          },
+          subtext: params.shrNm + '(' + params.shrCd + ')' + ' ' + '分析周期：' + params.from + '至' + params.to
+        },
         animation: true,
         color: colorList,
-        tooltip: {
-          //   triggerOn: 'none',
-          //   transitionDuration: 0,
-          //   confine: true,
-          //   bordeRadius: 4,
-          //   borderWidth: 1,
-          //   borderColor: '#333',
-          //   backgroundColor: 'rgba(255,255,255,0.9)',
-          //   textStyle: {
-          //     fontSize: 12,
-          //     color: '#333'
-          //   }
-          show: true,
-          trigger: "axis",
-          formatter: function (params) {
-            var res;
-            res = params[0].name;
-            res += "<br/> 今开 : " + params[0].data[1] / 100;
-            res += "<br/> 收盘 : " + params[0].data[2] / 100;
-            res += "<br/>  最低 : " + params[0].data[3] / 100;
-            res += "<br/>  最高 : " + params[0].data[4] / 100;
-            res += "<br/>  成交量 : " + params[0].data[5] / 10000 + '万';
-            return res;
-          }
-        },
         axisPointer: {
           link: [{
             xAxisIndex: [0, 1]
           }]
         },
-        dataZoom: [{
-          type: 'inside',
-          xAxisIndex: [0, 1],
-          start: 80,
-          end: 100,
-          height: 20
-        }],
         xAxis: [{
+          name: '后续走势',
+          nameLocation: 'center',
           type: 'category',
           data: data0.categoryData,
           boundaryGap: false,
@@ -117,7 +107,11 @@ export default {
               color: '#777'
             }
           },
+          axisTick: {
+            show: false
+          },
           axisLabel: {
+            show: false,
             formatter: function (value) {
               return dayjs(value).format('YY-M-D');
             }
@@ -156,19 +150,22 @@ export default {
           splitNumber: 2,
           axisLine: {
             lineStyle: {
-              color: '#777'
+              color: '#999'
             }
           },
           splitLine: {
-            show: true
+            show: false,
           },
           axisTick: {
             show: false
           },
           axisLabel: {
+            show: false,
             inside: true,
             formatter: '{value}\n'
-          }
+          },
+          min: 'dataMin',
+          max: 'dataMax'
         }, {
           scale: true,
           gridIndex: 1,
@@ -184,7 +181,9 @@ export default {
           },
           splitLine: {
             show: false
-          }
+          },
+          min: 'dataMin',
+          max: 'dataMax'
         }],
         grid: [{
           left: 20,
@@ -270,36 +269,15 @@ export default {
             }
           }
         }, {
-          name: 'MA5',
+          data: [
+            [data0.categoryData[data0.values.length - 21], getArrMin(data0.values) - getArrMin(data0.values) / 50],
+            [data0.categoryData[data0.values.length - 21], data0.values[data0.values.length - 21][3]]
+          ],
           type: 'line',
-          data: calculateMA(data0, 5),
-          smooth: true,
-          showSymbol: false,
           lineStyle: {
             normal: {
-              width: 1
-            }
-          }
-        }, {
-          name: 'MA10',
-          type: 'line',
-          data: calculateMA(data0, 10),
-          smooth: true,
-          showSymbol: false,
-          lineStyle: {
-            normal: {
-              width: 1
-            }
-          }
-        }, {
-          name: 'MA20',
-          type: 'line',
-          data: calculateMA(data0, 20),
-          smooth: true,
-          showSymbol: false,
-          lineStyle: {
-            normal: {
-              width: 1
+              width: 1,
+              type: 'dashed'
             }
           }
         }]

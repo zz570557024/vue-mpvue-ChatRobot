@@ -4,6 +4,7 @@ import Chat from '../pages/chat/index.vue'
 import ChatDetail from '../pages/chatDetail/index.vue'
 import newsDetail from '../pages/newsDetail/index.vue'
 import stockList from '../pages/stockList/index.vue'
+import stockDetail from '../pages/stockDetail/index.vue'
 
 Vue.use(Router)
 
@@ -27,5 +28,10 @@ export default new Router({
     name: 'stockList',
     component: stockList,
     alias: '/pages/stockList/main'
+  }, {
+    path: '/stockDetail',
+    name: 'stockDetail',
+    component: stockDetail,
+    alias: '/pages/stockDetail/main'
   }]
 })
