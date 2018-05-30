@@ -7,6 +7,7 @@
 # 选股机器人（H5/小程序）
 
 **A Vue + Mpvue Project**
+
 web端与小程序端开发一体化，基本实现全套代码复用。
 
 > [Vue](https://cn.vuejs.org/) 是一套用于构建用户界面的渐进式框架。`Vue` 的核心库只关注视图层，不仅易于上手，还便于与第三方库或既有项目整合。另一方面，当与现代化的工具链以及各种支持类库结合使用时，`Vue` 也完全能够为复杂的单页应用提供驱动。
@@ -46,7 +47,13 @@ npm run build --report
 
 ## 截图
 
+### web端
+
 ![对话聊天](./static/res/readmeImg/demo_2.png) ![股票详情](./static/res/readmeImg/demo_1.png)
+
+### 微信端
+
+![对话聊天](./static/res/readmeImg/demo_wx_1.png) ![股票详情](./static/res/readmeImg/demo_wx_2.png)
 
 ## Contribution
 
@@ -57,4 +64,6 @@ npm run build --report
 [MIT](http://opensource.org/licenses/MIT)
 
 ## P.S.
-*这个版本直接构建小程序会有一些报错，需要将报错插件移除。*
+- *这个版本直接构建小程序会有一些报错，需要将报错插件移除*
+- *部分样式无法统一，需要调整*
+- *毕竟老板要哪个，打个包丢给他，要两个端同时开发而且表现一模一样，需要把张小龙抓起来问他干嘛要搞个微信小程序*
