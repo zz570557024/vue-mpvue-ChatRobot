@@ -4,11 +4,11 @@
    <a href="https://www.npmjs.com/package/vue"><img src="https://img.shields.io/npm/v/vue.svg" alt="Version"></a>
    <a href="https://www.npmjs.com/package/vue"><img src="https://img.shields.io/npm/l/vue.svg" alt="License"></a>
 </p> -->
-# 选股机器人（H5/小程序）
+# 选股机器人（移动端/小程序）
 
 **A Vue + Mpvue Project**
 
-web端与小程序端开发一体化，基本实现全套代码复用。
+一体化移动端与小程序开发，实现全套代码复用。
 
 > [Vue](https://cn.vuejs.org/) 是一套用于构建用户界面的渐进式框架。`Vue` 的核心库只关注视图层，不仅易于上手，还便于与第三方库或既有项目整合。另一方面，当与现代化的工具链以及各种支持类库结合使用时，`Vue` 也完全能够为复杂的单页应用提供驱动。
 
@@ -40,9 +40,9 @@ npm run build --report
 
 * 使用 `Vue.js` 构建移动端应用
 * 使用 `mpvue` 复用代码构建小程序应用
-* 彻底的组件化开发能力：提高代码复用性
-* 方便的 Vuex 数据管理方案：方便构建复杂应用
-* 快捷的 webpack 构建机制：自定义构建策略、开发阶段 hotReload
+* 组件化开发，提高代码复用性
+* 使用 Vuex 数据管理方案，方便构建复杂应用
+* 使用 webpack 构建机制：自定义构建策略、开发阶段 hotReload
 * 支持使用 npm 外部依赖
 
 ## 截图
@@ -64,6 +64,7 @@ npm run build --report
 [MIT](http://opensource.org/licenses/MIT)
 
 ## P.S.
-- *这个版本直接构建小程序会有一些报错，需要将报错插件移除*
-- *部分样式无法统一，需要调整*
-- *毕竟老板要哪个，打个包丢给他，要两个端同时开发而且表现一模一样，需要把张小龙抓起来问他干嘛要搞个微信小程序*
+- *此项目适合Vue框架，mpvue框架和多端开发学习，对于公司大型项目不建议一体化开发；*
+- *这个版本直接构建小程序会有一些报错，需要将报错插件移除；*
+- *部分样式无法统一，需要调整；*
+- *毕竟老板要哪个，打个包丢给他，要两个端同时开发而且表现一模一样，需要把张小龙抓起来问他干嘛自己造个轮子~*
