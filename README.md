@@ -47,13 +47,25 @@ npm run build --report
 
 ## 截图
 
-### web端
+### 移动端
 
 ![对话聊天](./static/res/readmeImg/demo_2.png) ![股票详情](./static/res/readmeImg/demo_1.png)
 
 ### 微信端
 
 ![对话聊天](./static/res/readmeImg/demo_wx_1.png) ![股票详情](./static/res/readmeImg/demo_wx_2.png)
+
+## 上线
+
+### 移动端在线demo地址
+
+[选股机器人](47.97.183.104:85)
+
+### 小程序按照微信流程发布
+
+![小程序发布](./static/res/readmeImg/demo_wx_publish.png)
+![小程序访问](./static/res/readmeImg/demo_wx_userAmonut.png)
+
 
 ## Contribution
 
