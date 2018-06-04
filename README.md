@@ -1,9 +1,3 @@
-<!-- <p align="center"><img width="100" src="./static/res/img/liangPlus.png" alt="mpvue logo"></a></p>
-<p align="center">
-   <a href="https://circleci.com/gh/vuejs/vue/tree/dev"><img src="https://img.shields.io/circleci/project/vuejs/vue/dev.svg" alt="Build Status"></a>
-   <a href="https://www.npmjs.com/package/vue"><img src="https://img.shields.io/npm/v/vue.svg" alt="Version"></a>
-   <a href="https://www.npmjs.com/package/vue"><img src="https://img.shields.io/npm/l/vue.svg" alt="License"></a>
-</p> -->
 # 选股机器人（移动端/小程序）
 
 **A Vue + Mpvue Project**
@@ -55,13 +49,13 @@ npm run build --report
 
 ![对话聊天](./static/res/readmeImg/demo_wx_1.png) ![股票详情](./static/res/readmeImg/demo_wx_2.png)
 
-## 上线
+## 部署
 
-### 移动端在线demo地址
+### 移动端在线示例
 
 [选股机器人](http://47.97.183.104:85)
 
-### 小程序按照微信流程发布
+### 小程序上线发布
 
 ![小程序发布](./static/res/readmeImg/demo_wx_publish.png)
 ![小程序访问](./static/res/readmeImg/demo_wx_userAmonut.png)

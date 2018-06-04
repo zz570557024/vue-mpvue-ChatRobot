@@ -1,8 +1,8 @@
 {
-  "name": "stock_robot",
+  "name": "vue-mpvue-chatrobot",
   "version": "1.0.0",
-  "description": "A Mpvue project",
-  "author": "zhaotj <570557024@qq.com>",
+  "description": "A Vue + Mpvue Project",
+  "main": ".postcssrc.js",
   "private": true,
   "scripts": {
     "dev": "node build/dev-server.js Disable ESLint",
@@ -21,18 +21,17 @@
     "dns": "^0.2.2",
     "echarts": "^4.0.4",
     "electron": "^1.8.4",
+    "extract-text-webpack-plugin": "^2.1.2",
     "iview": "^2.11.0",
-    "mpvue": "^1.0.6",
     "net": "^1.0.2",
     "node-notifier": "^5.2.1",
     "numeral": "^2.0.6",
-    "prettier": "^1.11.1",
-    "tls": "0.0.1",
+    "request": "^2.85.0",
+    "tls": "^0.0.1",
     "vue": "^2.5.16",
     "vue-router": "^3.0.1",
     "vue-scroller": "^2.2.4",
-    "vuex": "^2.3.1",
-    "webpack-mpvue-asset-plugin": "0.0.1"
+    "webpack-mpvue-asset-plugin": "^0.0.1"
   },
   "devDependencies": {
     "autoprefixer": "^6.7.2",
@@ -86,6 +85,20 @@
     "webpack-hot-middleware": "^2.16.1",
     "webpack-merge": "^4.1.0"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zz570557024/vue-mpvue-ChatRobot.git"
+  },
+  "keywords": [
+    "vue.js",
+    "mpvue"
+  ],
+  "author": "RuShi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zz570557024/vue-mpvue-ChatRobot/issues"
+  },
+  "homepage": "https://github.com/zz570557024/vue-mpvue-ChatRobot#readme",
   "engines": {
     "node": ">= 4.0.0",
     "npm": ">= 3.0.0"
