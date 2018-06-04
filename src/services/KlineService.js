@@ -153,7 +153,8 @@ export default class Kline {
       methods: 'POST',
       data: {
         code: data.code
-      }
+      },
+      type: 1
     }
     return service.httpRequest(option)
   }
@@ -161,7 +162,8 @@ export default class Kline {
   getCapitalFlows(service, data = {}) {
     var option = {
       url: '/api/external/capitalFlows/' + data.code,
-      methods: 'GET'
+      methods: 'GET',
+      type: 1
     }
     return service.httpRequest(option)
   }
@@ -169,7 +171,8 @@ export default class Kline {
   getCapitalFlowsMain(service, data = {}) {
     var option = {
       url: '/api/external/capitalFlowsMain/' + data.code,
-      methods: 'GET'
+      methods: 'GET',
+      type: 1
     }
     return service.httpRequest(option)
   }
@@ -188,7 +191,8 @@ export default class Kline {
         stkTyp: data.stkTyp || 14901,
         KTyp: data.KTyp || 'daily',
         trdDyNum: data.trdDyNum || 30
-      }
+      },
+      type: 1
     }
     return service.httpRequest(option)
   }

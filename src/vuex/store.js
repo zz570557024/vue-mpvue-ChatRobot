@@ -1,3 +1,4 @@
+//import Vue from './../../static/vue.all'
 import Vue from 'vue'
 import Vuex from 'vuex'
 

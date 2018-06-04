@@ -86,9 +86,9 @@
             <div v-show="!canvas&&KlineTab==3" id="mouthChart" :style="'width:'+screenWidth+'px;height:'+screenHeigth+'px'"></div>
             <div v-show="!canvas&&KlineTab==4" id="fiveDayChart" :style="'width:'+screenWidth+'px;height:'+screenHeigth+'px'"></div>
         </div>
-        <div class="circle" @click="getStockMsg">
+        <!-- <div class="circle" @click="getStockMsg">
             <div class="circle_txt">相似 K 线</div>
-        </div>
+        </div> -->
         <div class="container news_List">
             <div class="tab_title fb">
                 <div :class="lineNum==0?'tabselected':'tab'" @click="getNews(0)">新闻</div>
@@ -104,7 +104,7 @@
                 <div v-else class="news-list">
                     <div class="list" ref="newsList">
                         <div class="list-item" v-for="(item, index) in news" :key="index" v-if="type==='A'" @click="newsDetail(item)">
-                            <span class="item-title" :style="{width: newsTitle}">{{item.title}}</span>
+                            <div class="item-title" :style="{width: newsTitle}">{{item.title}}</div>
                             <div v-if="item.pic" class="image-wrapper">
                                 <img class="item-image" :src="item.pic" :alt="item.title">
                             </div>
@@ -142,14 +142,12 @@
 </template>
 <script>
 import Kline from '../../services/KlineService'
-import parserDate from '../../utils/stock-parser'
+import parserDate from '../../utils/echarts-dateKline'
 import store from '../../vuex/store'
 import fundCharts from '../../components/fundCharts'
 import echarts from 'echarts'
 import Util from '../../utils/util'
-import timeDate from '../../utils/timeLineDate'
-// import VueScroller from 'vue-scroller'
-// Vue.use(VueScroller)
+import timeDate from '../../utils/echarts-timeKline'
 
 export default {
     name: "chatDetail",
@@ -203,7 +201,7 @@ export default {
     },
     methods: {
         getStockMsg () {
-            this.service.navigatePageTo(this.router + '/pages/stockDetail/main')
+            //this.service.navigatePageTo(this.router + '/pages/stockDetail/main')
         },
         async evaluated () {
             this.param.code = window ? window.localStorage.getItem('code') : wx.getStorageSync('code');
@@ -316,29 +314,7 @@ export default {
                 this.screenHeigth = 220;
             })
             this.service.scrollTop();
-        },
-        // infinite (done) {
-        //     this.pageParam.count = this.pageParam.count + 10;
-        //     this.getNews(this.lineNum).then(data => {
-        //         if (this.pageParam.count > this.news.length) {
-        //             done(true)
-        //         } else {
-        //             done()
-        //         }
-        //     }).catch(err => {
-        //         done(true)
-        //     })
-
-        // },
-        // refresh (done) {
-        //     this.pageParam.count = 10;
-        //     this.getNews(this.lineNum).then(data => {
-        //         done()
-        //         this.$refs.scrollerVM.finishInfinite()
-        //     }).catch(err => {
-        //         done(true)
-        //     })
-        // }
+        }
     },
     mounted () {
         this.evaluated().then(data => {
@@ -370,11 +346,10 @@ export default {
 }
 ec-canvas {
   width: 400px;
-  height: 400px;
+  height: 240px;
 }
 .news_List {
   position: relative;
-  top: -55px;
 }
 .container {
   height: 100%;
@@ -430,7 +405,7 @@ ec-canvas {
   padding: 0;
 }
 .list-item {
-  height: auto;
+  height: 70px;
   margin: 0 15px;
   border-bottom: 1px solid #f5f5f5;
   width: 90%;

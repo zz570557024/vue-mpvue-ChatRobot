@@ -8,6 +8,10 @@
 
 > [mpvue](http://mpvue.com/) 是一个使用 `Vue.js` 开发小程序的前端框架。框架基于 `Vue.js` 核心，`mpvue` 修改了 `Vue.js` 的 runtime 和 compiler 实现，使其可以运行在小程序环境中，从而为小程序开发引入了整套 `Vue.js` 开发体验。
 
+## 简介
+
+> [一个同时支持移动端与小程序的聊天机器人](https://www.jianshu.com/p/91e566bfeedf)
+
 ## Build Setup
 
 ``` bash
@@ -58,7 +62,6 @@ npm run build --report
 ### 小程序上线发布
 
 ![小程序发布](./static/res/readmeImg/demo_wx_publish.png)
-![小程序访问](./static/res/readmeImg/demo_wx_userAmonut.png)
 
 
 ## Contribution
@@ -71,6 +74,5 @@ npm run build --report
 
 ## P.S.
 - *此项目适合Vue框架，mpvue框架和多端开发学习，对于公司大型项目不建议一体化开发；*
-- *这个版本直接构建小程序会有一些报错，需要将报错插件移除；*
-- *部分样式无法统一，需要调整；*
-- *毕竟老板要哪个，打个包丢给他，要两个端同时开发而且表现一模一样，需要把张小龙抓起来问他干嘛自己造个轮子~*
+- *若小程序端有第三方库错误需注释`import axios from axios`；*
+- *若还有其它问题，欢迎提问。*

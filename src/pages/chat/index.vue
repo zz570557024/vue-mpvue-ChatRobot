@@ -73,10 +73,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="more_message">
-                                    <!-- <a :href="router + '/pages/stockList/main'" style="color:#000;text-decoration:none">更多股票信息</a> -->
-                                    <div @click="moreStock(index)" style="color:#000;text-decoration:none">更多相关股票</div>
-                                </div>
                             </div>
                             <div class="chat_say" v-else>
                                 <div class="chat_txt">暂无相关信息</div>
@@ -188,7 +184,7 @@ export default {
         },
         getStockMsg (item) {
             store.commit('stockDetail', item)
-            this.service.navigatePageTo(this.router + '/pages/stockDetail/main')
+            this.service.navigatePageTo(this.router + '/pages/chatDetail/main')
         },
         qusCtx (ctx) {
             if (ctx != '') {
@@ -225,6 +221,12 @@ export default {
 
 </script>
 <style>
+.font_red {
+  color: red;
+}
+.font_green {
+  color: green;
+}
 .list-item {
   display: inline-block;
   margin-right: 10px;
@@ -335,6 +337,7 @@ export default {
   z-index: 10;
   width: 100%;
   background-color: #fff;
+  left: 0px;
 }
 .chat_area {
   padding-top: 10px;
@@ -406,7 +409,7 @@ button {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  padding: 100px 0;
+  padding: 0 0;
   box-sizing: border-box;
   -webkit-user-select: none;
   user-select: none;

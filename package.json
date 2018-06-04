@@ -31,6 +31,7 @@
     "vue": "^2.5.16",
     "vue-router": "^3.0.1",
     "vue-scroller": "^2.2.4",
+    "vuex": "^3.0.1",
     "webpack-mpvue-asset-plugin": "^0.0.1"
   },
   "devDependencies": {
