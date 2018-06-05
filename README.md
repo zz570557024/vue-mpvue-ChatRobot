@@ -33,6 +33,11 @@ npm run buildH5
 # build for production and view the bundle analyzer report
 npm run build --report
 ```
+## 重要！！！
+
+- [echarts-for-weixin](https://github.com/ecomfe/echarts-for-weixin)**支持微信版本 >= 6.6.3，对应基础库版本 >= 1.9.91**。
+- 若小程序端有`thirdScriptError`错误需注释`import axios from axios`后重新运行`npm run dev`;
+- 请在`project.config.json`文件,`appid`处填写自己注册的微信appid;
 
 ## 主要特性
 
@@ -73,6 +78,6 @@ npm run build --report
 [MIT](http://opensource.org/licenses/MIT)
 
 ## P.S.
-- *此项目适合Vue框架，mpvue框架和多端开发学习，对于公司大型项目不建议一体化开发；*
-- *若小程序端有第三方库错误需注释`import axios from axios`；*
+- *此项目适合Vue，mpvue和多端开发学习，对于公司大型项目不建议一体化开发；*
+
 - *若还有其它问题，欢迎提问。*
