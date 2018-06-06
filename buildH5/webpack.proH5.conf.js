@@ -1,9 +1,3 @@
-/*
- * @Author: shixinghao 
- * @Date: 2017-12-25 16:07:35 
- * @Last Modified by: shixinghao
- * @Last Modified time: 2018-04-18 16:42:50
- */
 const path = require('path');
 const webpack = require('webpack');
 const merge = require('webpack-merge');

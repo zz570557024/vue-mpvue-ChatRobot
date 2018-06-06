@@ -1,9 +1,3 @@
-/*
- * @Author: shixinghao 
- * @Date: 2017-12-25 16:07:28 
- * @Last Modified by: shixinghao
- * @Last Modified time: 2018-03-20 10:13:42
- */
 module.exports = {
   dev: {
     assetsPublicPath: '/',
@@ -12,7 +6,7 @@ module.exports = {
     proxyTable: {
       //   '/**/*.api': "http://192.168.1.65:8188",
       //   '/**/*.cms': "http://47.98.18.135:8081",
-      '/static': "http://192.168.1.65:8200",
+      //   '/static': "http://192.168.1.65:8200",
       '/liang': {
         target: 'http://47.96.167.211:5002',
         pathRewrite: {

@@ -1,9 +1,3 @@
-/*
- * @Author: shixinghao 
- * @Date: 2017-12-12 09:31:44 
- * @Last Modified by: shixinghao
- * @Last Modified time: 2018-03-26 12:16:58
- */
 import Vue from 'vue';
 import numeral from 'numeral';
 import moment from 'dayjs'

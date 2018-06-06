@@ -35,15 +35,14 @@ npm run build --report
 ```
 ## 重要！！！
 
-- [echarts-for-weixin](https://github.com/ecomfe/echarts-for-weixin)**支持微信版本 >= 6.6.3，对应基础库版本 >= 1.9.91**。
-- 若小程序端有`thirdScriptError`错误需注释`import axios from axios`后重新运行`npm run dev`;
 - 请在`project.config.json`文件,`appid`处填写自己注册的微信appid;
+- [echarts-for-weixin](https://github.com/ecomfe/echarts-for-weixin)**支持微信版本 >= 6.6.3，对应基础库版本 >= 1.9.91**。
+- 若小程序端有`thirdScriptError`错误需注释`import axios from axios`和`import echarts from echarts`后重新运行`npm run dev`;
 
 ## 主要特性
 
 * 使用 `Vue.js` 构建移动端应用
 * 使用 `mpvue` 复用代码构建小程序应用
-* 组件化开发，提高代码复用性
 * 使用 Vuex 数据管理方案，方便构建复杂应用
 * 使用 webpack 构建机制：自定义构建策略、开发阶段 hotReload
 * 支持使用 npm 外部依赖
@@ -52,22 +51,11 @@ npm run build --report
 
 ### 移动端
 
-![对话聊天](./static/res/readmeImg/demo_2.png) ![股票详情](./static/res/readmeImg/demo_1.png)
+![移动端](./static/res/readmeImg/demo_web.gif)
 
 ### 微信端
 
-![对话聊天](./static/res/readmeImg/demo_wx_1.png) ![股票详情](./static/res/readmeImg/demo_wx_2.png)
-
-## 部署
-
-### 移动端在线示例
-
-[选股机器人](http://47.97.183.104:85)
-
-### 小程序上线发布
-
-![小程序发布](./static/res/readmeImg/demo_wx_publish.png)
-
+![小程序](./static/res/readmeImg/demo_wx.gif)
 
 ## Contribution
 
