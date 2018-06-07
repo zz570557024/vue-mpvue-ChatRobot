@@ -49,13 +49,9 @@ npm run build --report
 
 ## 截图
 
-### 移动端
+**移动端 & 小程序**
 
-![移动端](./static/res/readmeImg/demo_web.gif)
-
-### 微信端
-
-![小程序](./static/res/readmeImg/demo_wx.gif)
+![移动端](./static/res/readmeImg/demo_web.gif)     ![小程序](./static/res/readmeImg/demo_wx.gif)
 
 ## Contribution
 
@@ -66,6 +62,4 @@ npm run build --report
 [MIT](http://opensource.org/licenses/MIT)
 
 ## P.S.
-- *此项目适合Vue，mpvue和多端开发学习，对于公司大型项目不建议一体化开发；*
-
-- *若还有其它问题，欢迎提问。*
+- *若还有其它疑问，欢迎issues。*

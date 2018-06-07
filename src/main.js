@@ -1,4 +1,3 @@
-//import Vue from './../static/vue.all'
 import Vue from 'vue'
 import App from './App'
 import wxService from './api/wxService'
