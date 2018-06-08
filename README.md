@@ -37,7 +37,6 @@ npm run build --report
 
 - 请在`project.config.json`文件,`appid`处填写自己注册的微信appid;
 - [echarts-for-weixin](https://github.com/ecomfe/echarts-for-weixin)**支持微信版本 >= 6.6.3，对应基础库版本 >= 1.9.91**。
-- 若小程序端有`thirdScriptError`错误需注释`import axios from axios`和`import echarts from echarts`后重新运行`npm run dev`;
 
 ## 主要特性
 
@@ -60,6 +59,3 @@ npm run build --report
 ## License
 
 [MIT](http://opensource.org/licenses/MIT)
-
-## P.S.
-- *若还有其它疑问，欢迎issues。*

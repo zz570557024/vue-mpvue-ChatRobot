@@ -145,7 +145,6 @@ import Kline from '../../services/KlineService'
 import parserDate from '../../utils/echarts-dateKline'
 import store from '../../vuex/store'
 import fundCharts from '../../components/fundCharts'
-import echarts from 'echarts'
 import Util from '../../utils/util'
 import timeDate from '../../utils/echarts-timeKline'
 

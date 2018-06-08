@@ -11,7 +11,6 @@
 import Kline from '../services/KlineService'
 import pieOptions from '../utils/echarts-pie'
 import barOptions from '../utils/echarts-bar'
-import echarts from 'echarts'
 export default {
     data () {
         return {
