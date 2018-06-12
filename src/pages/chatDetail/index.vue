@@ -69,35 +69,24 @@
         </div>
         <div class="container Kline_scope">
             <div class="tab_title fb">
-                <div :class="KlineTab==0?'tabselected':'tab'" @click="getKline(0)">分时</div>
-                <div :class="KlineTab==4?'tabselected':'tab'" @click="getKline(4)">五日</div>
-                <div :class="KlineTab==1?'tabselected':'tab'" @click="getKline(1)">日线</div>
-                <div :class="KlineTab==2?'tabselected':'tab'" @click="getKline(2)">周线</div>
-                <div :class="KlineTab==3?'tabselected':'tab'" @click="getKline(3)">月线</div>
+                <div :class="KlineTab==index?'tabselected':'tab'" v-for="(item, index) in KlineTabs" :key="index" @click="getKline(index)">{{item}}</div>
             </div>
             <ec-canvas v-if="canvas&&KlineTab==0" class="canvas" id="mychart-dom-bar" canvas-id="mychart-bar0" :ec="ec"></ec-canvas>
-            <ec-canvas v-if="canvas&&KlineTab==4" class="canvas" id="mychart-dom-bar" canvas-id="mychart-bar1" :ec="ec1"></ec-canvas>
-            <ec-canvas v-if="canvas&&KlineTab==1" class="canvas" id="mychart-dom-bar" canvas-id="mychart-bar2" :ec="ec2"></ec-canvas>
-            <ec-canvas v-if="canvas&&KlineTab==2" class="canvas" id="mychart-dom-bar" canvas-id="mychart-bar3" :ec="ec3"></ec-canvas>
-            <ec-canvas v-if="canvas&&KlineTab==3" class="canvas" id="mychart-dom-bar" canvas-id="mychart-bar4" :ec="ec4"></ec-canvas>
+            <ec-canvas v-if="canvas&&KlineTab==4" class="canvas" id="mychart-dom-bar" canvas-id="mychart-bar1" :ec="ec4"></ec-canvas>
+            <ec-canvas v-if="canvas&&KlineTab==1" class="canvas" id="mychart-dom-bar" canvas-id="mychart-bar2" :ec="ec1"></ec-canvas>
+            <ec-canvas v-if="canvas&&KlineTab==2" class="canvas" id="mychart-dom-bar" canvas-id="mychart-bar3" :ec="ec2"></ec-canvas>
+            <ec-canvas v-if="canvas&&KlineTab==3" class="canvas" id="mychart-dom-bar" canvas-id="mychart-bar4" :ec="ec3"></ec-canvas>
             <div v-show="!canvas&&KlineTab==0" id="timeChart" :style="'width:'+screenWidth+'px;height:'+screenHeigth+'px'"></div>
-            <div v-show="!canvas&&KlineTab==1" id="dailyChart" :style="'width:'+screenWidth+'px;height:'+screenHeigth+'px'"></div>
-            <div v-show="!canvas&&KlineTab==2" id="weekChart" :style="'width:'+screenWidth+'px;height:'+screenHeigth+'px'"></div>
-            <div v-show="!canvas&&KlineTab==3" id="mouthChart" :style="'width:'+screenWidth+'px;height:'+screenHeigth+'px'"></div>
-            <div v-show="!canvas&&KlineTab==4" id="fiveDayChart" :style="'width:'+screenWidth+'px;height:'+screenHeigth+'px'"></div>
+            <div v-show="!canvas&&KlineTab==1" id="fiveDayChart" :style="'width:'+screenWidth+'px;height:'+screenHeigth+'px'"></div>
+            <div v-show="!canvas&&KlineTab==2" id="dailyChart" :style="'width:'+screenWidth+'px;height:'+screenHeigth+'px'"></div>
+            <div v-show="!canvas&&KlineTab==3" id="weekChart" :style="'width:'+screenWidth+'px;height:'+screenHeigth+'px'"></div>
+            <div v-show="!canvas&&KlineTab==4" id="mouthChart" :style="'width:'+screenWidth+'px;height:'+screenHeigth+'px'"></div>
         </div>
-        <!-- <div class="circle" @click="getStockMsg">
-            <div class="circle_txt">相似 K 线</div>
-        </div> -->
         <div class="container news_List">
             <div class="tab_title fb">
-                <div :class="lineNum==0?'tabselected':'tab'" @click="getNews(0)">新闻</div>
-                <div :class="lineNum==4?'tabselected':'tab'" @click="getNews(4)">资金</div>
-                <div :class="lineNum==1?'tabselected':'tab'" @click="getNews(1)">公告</div>
-                <div :class="lineNum==2?'tabselected':'tab'" @click="getNews(2)">研报</div>
-                <div :class="lineNum==3?'tabselected':'tab'" @click="getNews(3)">简况</div>
+                <div :class="lineNum==index?'tabselected':'tab'" v-for="(item, index) in newsTabs" :key="index" @click="getNews(index)">{{item}}</div>
             </div>
-            <div v-if="lineNum==0||lineNum==1||lineNum==2">
+            <div v-if="lineNum==0||lineNum==2||lineNum==3">
                 <div v-if="news && news.length == 0" class="news-none">
                     暂无相关内容
                 </div>
@@ -112,7 +101,7 @@
                     </div>
                 </div>
             </div>
-            <div v-if="lineNum==3">
+            <div v-if="lineNum==4">
                 <div class="stockSummary_li">
                     <span>公司名称</span>
                     <span class="stockSummary_span">{{stockSummary.name}}</span>
@@ -134,7 +123,7 @@
                     <span class="stockSummary_span">100</span>
                 </div>
             </div>
-            <div v-if="lineNum==4">
+            <div v-if="lineNum==1">
                 <fundCharts></fundCharts>
             </div>
         </div>
@@ -192,7 +181,9 @@ export default {
             stockSummary: {},
             stockNews: [],
             stockNotices: [],
-            stockResearch: []
+            stockResearch: [],
+            KlineTabs: ['分时', '五日', '日线', '周线', '月线'],
+            newsTabs: ['新闻', '资金', '公告', '研报', '简况']
         }
     },
     components: {

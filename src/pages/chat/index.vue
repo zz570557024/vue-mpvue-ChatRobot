@@ -112,7 +112,7 @@ export default {
             chatList: [{
                 position: 'left',
                 word: {
-                    answer: '你好，我是选股神器，你可以询问我股票相关的问题，还有更多其他功能等你发现。',
+                    answer: '你好，欢迎和我聊天，有什么可以帮助你的吗？',
                     type: 'sentence'
                 },
                 type: 1,
@@ -475,17 +475,6 @@ button {
   padding-top: 10px;
   margin-top: 5px;
 }
-
-/* .upload {
-  position: relative;
-  left: 10px;
-  display: block;
-  width: 28.2px;
-  height: 7.2px;
-  border-radius: 50%;
-  font-size: 0;
-  background-color: transparent;
-} */
 .inputFile {
   width: 30px;
   height: 30px;

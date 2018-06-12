@@ -4,7 +4,6 @@ const dateTo = Util.nowDate();
 
 export default class Kline {
   getDailyDate(service, data = {}) {
-    console.log('code', data)
     let option = {
       url: '/api/stockInformationAPI/priceDaily',
       methods: 'POST',
