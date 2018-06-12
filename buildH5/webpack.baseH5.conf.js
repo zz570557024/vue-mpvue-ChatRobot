@@ -34,19 +34,11 @@ module.exports = {
     rules: [{
         test: /\.scss$/,
         loaders: ['style-loader', 'css-loader', 'resolve-url-loader', 'sass-loader?sourceMap']
-        // loader: ExtractTextPlugin.extract({
-        //     use: ['css-loader', 'resolve-url-loader', 'sass-loader?sourceMap'],
-        //     fallback: 'style-loader'
-        // })
       },
       {
         test: /\.vue$/,
         loader: 'vue-loader',
         options: {
-          // loaders: ExtractTextPlugin.extract({
-          //     use: ['vue-style-loader', 'css-loader', 'resolve-url-loader', 'sass-loader?sourceMap'],
-          //     fallback: 'vue-style-loader'
-          // })
           loaders: {
             scss: ['vue-style-loader', 'css-loader', 'resolve-url-loader', 'sass-loader?sourceMap'] // <style lang="scss">
           }
