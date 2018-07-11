@@ -1,10 +1,14 @@
-# 选股机器人（移动端/小程序）
+# 股票机器人（移动端&小程序+前端&后端）
 
- **A Vue + Mpvue Project**（一体化移动端与小程序开发）
+从数据库到浏览器
+ **A Vue + Mpvue Project for Front end**（一体化移动端与小程序开发）
+ **koa for back end**（使用Koa开发服务端）
 
 > [Vue](https://cn.vuejs.org/) 是一套用于构建用户界面的渐进式框架。`Vue` 的核心库只关注视图层，不仅易于上手，还便于与第三方库或既有项目整合。另一方面，当与现代化的工具链以及各种支持类库结合使用时，`Vue` 也完全能够为复杂的单页应用提供驱动。
 
 > [mpvue](http://mpvue.com/) 是一个使用 `Vue.js` 开发小程序的前端框架。框架基于 `Vue.js` 核心，`mpvue` 修改了 `Vue.js` 的 runtime 和 compiler 实现，使其可以运行在小程序环境中，从而为小程序开发引入了整套 `Vue.js` 开发体验。
+
+> [koa](https://koa.bootcss.com/) koa 是由 Express 原班人马打造的，致力于成为一个更小、更富有表现力、更健壮的 Web 框架。 使用 koa 编写 web 应用，通过组合不同的 generator，可以免除重复繁琐的回调函数嵌套， 并极大地提升错误处理的效率。koa 不在内核方法中绑定任何中间件， 它仅仅提供了一个轻量优雅的函数库，使得编写 Web 应用变得得心应手。
 
 ## 简介
 
@@ -17,10 +21,10 @@
 npm install
 
 # build mini program
-npm run dev
+npm start
 
 # build H5 pages
-npm run devH5
+npm startH5
 
 # build for production with minification for mini program
 npm run build
@@ -44,6 +48,7 @@ npm run build --report
 * 使用 [Vuex](https://github.com/vuejs/vuex) 数据管理方案，方便构建复杂应用
 * 使用 [webpack](https://github.com/webpack/webpack) 构建机制：自定义构建策略、开发阶段 hotReload
 * 支持使用 [npm](https://github.com/npm/npm) 外部依赖
+* 使用`Koa`构建服务端
 
 ## 插件
 

@@ -8,7 +8,7 @@ module.exports = {
       //   '/**/*.cms': "http://47.98.18.135:8081",
       //   '/static': "http://192.168.1.65:8200",
       '/liang': {
-        target: 'http://47.96.167.211:5002',
+        target: 'http://127.0.0.1:8000',
         pathRewrite: {
           "^/liang": ''
         }

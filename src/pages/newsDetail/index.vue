@@ -43,40 +43,7 @@ export default {
 }
 </script>
 <style>
-.news_title {
-  margin-top: 10px;
-  padding: 0 20px;
-  text-align: center;
-  display: block;
-}
-.news_wrap {
-  font-size: 14px;
-  margin: 10px 10px;
-  border-bottom: solid gainsboro 1px;
-  text-align: center;
-  padding: 10px 0;
-}
-/* .auth {
-  font-size: 25rpx;
-  margin:10px 10px;
-} */
-.news_date {
-  margin-left: 10px;
-}
-.news_detail {
-  display: block;
-  text-indent: 2em;
-  text-align: left;
-  color: gray;
-  overflow: hidden;
-  width: 100%;
-  height: 100%;
-  line-height: 35px;
-  font-size: 14px;
-}
-.news_link {
-  font-size: 14px;
-}
+@import "../../scss/newsDetail.scss";
 </style>
 
 

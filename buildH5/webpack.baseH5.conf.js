@@ -74,5 +74,12 @@ module.exports = {
         }
       }
     ]
+  },
+  node: {
+    setImmediate: false,
+    dgram: 'empty',
+    fs: 'empty',
+    tls: 'empty',
+    child_process: 'empty'
   }
 }

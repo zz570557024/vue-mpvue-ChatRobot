@@ -16,7 +16,7 @@ export default {
     let data = await new Promise((resolve, reject) => {
       switch (options.type) {
         case 0:
-          options.url = 'https://stocks.liangplus.com' + options.url.split('/liang')[1];
+          options.url = 'http://127.0.0.1:8000' + options.url.split('/liang')[1];
           break;
         case 1:
           options.url = 'http://www.liangplus.com' + options.url.split('/api')[1];
