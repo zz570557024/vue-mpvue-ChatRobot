@@ -1,11 +1,10 @@
 # 股票机器人
 
 ## 前端（移动端&小程序）+ 后端（node.js） 
-### *从数据库到浏览器*
 
- **Front end: A Vue + Mpvue Project**（一体化移动端与小程序开发）
+ **前端: Vue + Mpvue**（支持移动端与小程序）
 
- **Back end: koa**（使用Koa2开发服务端）
+ **后端: koa**（使用Koa2开发服务端）
 
 > [Vue](https://cn.vuejs.org/) 是一套用于构建用户界面的渐进式框架。`Vue` 的核心库只关注视图层，不仅易于上手，还便于与第三方库或既有项目整合。另一方面，当与现代化的工具链以及各种支持类库结合使用时，`Vue` 也完全能够为复杂的单页应用提供驱动。
 
@@ -51,7 +50,19 @@ npm run build --report
 * 使用 [Vuex](https://github.com/vuejs/vuex) 数据管理方案，方便构建复杂应用
 * 使用 [webpack](https://github.com/webpack/webpack) 构建机制：自定义构建策略、开发阶段 hotReload
 * 支持使用 [npm](https://github.com/npm/npm) 外部依赖
-* 使用`Koa`构建服务端
+* 使用 `Koa` 构建服务端
+
+## 前后端分离
+
+```bash
+# 启动前端--小程序
+npm run dev
+# 启动前端--H5
+npm run devH5
+# 启动后台
+npm run server
+```
+*（服务端代码仅位于项目server文件夹下）*
 
 ## 插件
 

@@ -9,6 +9,7 @@ const bodyparser = require('koa-bodyparser');
 const log4js = require('log4js');
 const log = log4js.getLogger('app');
 const chat = require('./router/chat')
+const stock = require('./router/stock')
 
 // error handler
 // onerror(app)
@@ -48,5 +49,6 @@ app.use(async (ctx, next) => {
 })
 
 app.use(chat.routes(), chat.allowedMethods());
+app.use(stock.routes(), stock.allowedMethods());
 
 module.exports = app

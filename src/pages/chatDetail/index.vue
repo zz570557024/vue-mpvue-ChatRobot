@@ -283,11 +283,11 @@ export default {
                     this.news = this.stockNews;
                     this.newsTitle = '70%';
                     break;
-                case 1:
+                case 2:
                     this.news = this.stockNotices;
                     this.newsTitle = 'auto';
                     break;
-                case 2:
+                case 3:
                     this.news = this.stockResearch;
                     this.newsTitle = 'auto';
                     break;
