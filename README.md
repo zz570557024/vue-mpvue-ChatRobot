@@ -86,7 +86,8 @@ npm run server
 
 ## Contribution
 
-![master_head](https://avatars2.githubusercontent.com/u/31007223?s=400&u=2c4493300c0ff4a4362a737945e9cd63c015d7ae&v=4)
+![master_head](./static/res/img/head_2.jpg)
+
 [RuShi](https://github.com/zz570557024)
 
 ## License
