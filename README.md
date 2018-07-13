@@ -56,10 +56,10 @@ gulp build
 ## 前后端分离
 
 ```bash
-# 启动前端--小程序
+# 启动小程序
 npm run dev
 
-# 启动前端--H5
+# 启动H5
 npm run devH5
 
 # 启动后台
