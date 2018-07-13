@@ -5,14 +5,6 @@ const chatService = require('../service/chatService')
 
 router.prefix('/chat');
 
-router.get('/test', async (ctx, next) => {
-  try {
-    ctx.body = '111111';
-  } catch (err) {
-    log.info(err);
-  }
-})
-
 router.get('/defQuestions', async (ctx, next) => {
   try {
     ctx.body = chatService.defQuestions();
@@ -23,7 +15,15 @@ router.get('/defQuestions', async (ctx, next) => {
 
 router.get('/getAnswer', async (ctx, next) => {
   try {
-    ctx.body = chatService.getAnswer(ctx);
+    ctx.body = await chatService.getAnswer(ctx);
+  } catch (err) {
+    log.info(err)
+  }
+})
+
+router.get('/evaluation', async (ctx, next) => {
+  try {
+    ctx.body = chatService.evaluation(ctx);
   } catch (err) {
     log.info(err)
   }

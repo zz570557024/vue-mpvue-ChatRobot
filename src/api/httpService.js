@@ -47,5 +47,8 @@ export default {
   //滚动顶部
   async scrollTop() {
     window.scrollTo(0, 0);
+  },
+  async showToast(text) {
+    alert(text);
   }
 }

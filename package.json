@@ -1,5 +1,5 @@
 {
-  "name": "liangplus",
+  "name": "chat_robot",
   "version": "1.0.0",
   "description": "A Mpvue project",
   "author": "zhaotj <570557024@qq.com>",
@@ -11,7 +11,8 @@
     "startH5": "run-p devH5 server",
     "server": "cross-env NODE_ENV=development nodemon ./server/bin/www",
     "build": "node build/build.js",
-    "buildH5": "cross-env NODE_ENV=production ENV=sit webpack --config buildH5/webpack.proH5.conf.js"
+    "buildH5": "cross-env NODE_ENV=production ENV=sit webpack --config buildH5/webpack.proH5.conf.js",
+    "buildNode": "gulp build"
   },
   "dependencies": {
     "axios": "^0.18.0",
@@ -22,6 +23,10 @@
     "dns": "^0.2.2",
     "echarts": "^4.0.4",
     "electron": "^1.8.4",
+    "gulp": "^3.9.1",
+    "gulp-clean": "^0.4.0",
+    "gulp-rename": "^1.3.0",
+    "gulp-zip": "^4.1.0",
     "iview": "^2.11.0",
     "koa": "^2.5.1",
     "koa-bodyparser": "^4.2.1",
@@ -38,6 +43,7 @@
     "numeral": "^2.0.6",
     "prettier": "^1.11.1",
     "resolve-url-loader": "^2.3.0",
+    "run-sequence": "^2.2.1",
     "sass-loader": "^7.0.3",
     "tls": "0.0.1",
     "vue": "^2.5.16",

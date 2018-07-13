@@ -125,7 +125,7 @@ export default {
             isInput: true,
             qusList: [],
             sendBtn: false,
-            isQusList: true,
+            isQusList: true
         }
     },
     methods: {
@@ -202,7 +202,8 @@ export default {
                 evaluation: att
             }
             this.chatService.getChatEvaluation(this.service, data).then(data => {
-                alert('反馈成功')
+                console.log('data', data)
+                this.service.showToast(data.data.message);
             })
         },
         moreStock (index) {

@@ -14,7 +14,7 @@ export default class Kline {
         from: dateFrom,
         to: dateTo
       },
-      type: 1
+      type: 0
     }
     return service.httpRequest(option)
   }
@@ -29,7 +29,7 @@ export default class Kline {
         from: dateFrom,
         to: dateTo
       },
-      type: 1
+      type: 0
     }
     return service.httpRequest(option)
   }
@@ -44,7 +44,7 @@ export default class Kline {
         from: dateFrom,
         to: dateTo
       },
-      type: 1
+      type: 0
     }
     return service.httpRequest(option)
   }
@@ -72,7 +72,7 @@ export default class Kline {
         incr: '0',
         dt: ''
       },
-      type: 1
+      type: 0
     }
     return service.httpRequest(option)
   }
@@ -85,7 +85,7 @@ export default class Kline {
         shrCd: data.code,
         typ: data.typ || '14901'
       },
-      type: 1
+      type: 0
     }
     return service.httpRequest(option)
   }
@@ -99,7 +99,7 @@ export default class Kline {
         page: data.page || 1,
         count: data.count || 10
       },
-      type: 1
+      type: 0
     }
     return service.httpRequest(option)
   }
@@ -113,7 +113,7 @@ export default class Kline {
         page: data.page || 1,
         count: data.count || 10
       },
-      type: 1
+      type: 0
     }
     return service.httpRequest(option)
   }
@@ -127,7 +127,7 @@ export default class Kline {
         page: data.page || 1,
         count: data.count || 10
       },
-      type: 1
+      type: 0
     }
     return service.httpRequest(option)
   }
@@ -139,7 +139,7 @@ export default class Kline {
       data: {
         code: data.code
       },
-      type: 1
+      type: 0
     }
     return service.httpRequest(option)
   }
@@ -148,7 +148,7 @@ export default class Kline {
     var option = {
       url: '/liang/stock/capitalFlows',
       methods: 'GET',
-      type: 1
+      type: 0
     }
     return service.httpRequest(option)
   }
@@ -157,7 +157,7 @@ export default class Kline {
     var option = {
       url: '/liang/stock/capitalFlowsMain',
       methods: 'GET',
-      type: 1
+      type: 0
     }
     return service.httpRequest(option)
   }

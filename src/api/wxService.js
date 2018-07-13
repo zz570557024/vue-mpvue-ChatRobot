@@ -84,9 +84,11 @@ export default {
       }
     })
   },
-  //下拉刷新
-  async onPullDownRefresh(options, listFunction) {
-    options.pageSize = options.pageSize + 10;
-    return listFunction(options)
+  async showToast(text) {
+    await wx.showToast({
+      title: text,
+      icon: 'success',
+      duration: 2000
+    })
   }
 }

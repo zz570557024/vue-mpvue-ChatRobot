@@ -22,7 +22,7 @@ export default class Chat {
   }
   getChatEvaluation(service, data = {}) {
     let option = {
-      url: '/liang/evaluation/',
+      url: '/liang/chat/evaluation',
       data: {
         question: data.question,
         answer: data.answer,

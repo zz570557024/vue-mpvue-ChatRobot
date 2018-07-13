@@ -5,14 +5,6 @@ const stockService = require('../service/stockService')
 
 router.prefix('/stock');
 
-router.get('/test', async (ctx, next) => {
-  try {
-    ctx.body = '111111';
-  } catch (err) {
-    log.info(err);
-  }
-})
-
 router.get('/stockRealTime', async (ctx, next) => {
   try {
     ctx.body = stockService.stockRealTime();

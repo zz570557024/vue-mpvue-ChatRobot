@@ -1,10 +1,10 @@
 # 股票机器人
 
-## 前端（移动端&小程序）+ 后端（node.js） 
+## 前端（移动端&小程序）+ 后端（nodejs） 
 
- **前端: Vue + Mpvue**（支持移动端与小程序）
+ **前端: Vue + Mpvue** *（支持移动端与小程序）*
 
- **后端: koa**（使用Koa2开发服务端）
+ **后端: koa** *（使用Koa2开发服务端）*
 
 > [Vue](https://cn.vuejs.org/) 是一套用于构建用户界面的渐进式框架。`Vue` 的核心库只关注视图层，不仅易于上手，还便于与第三方库或既有项目整合。另一方面，当与现代化的工具链以及各种支持类库结合使用时，`Vue` 也完全能够为复杂的单页应用提供驱动。
 
@@ -28,14 +28,15 @@ npm start
 # build H5 pages
 npm run startH5
 
-# build for production with minification for mini program
+# build pages for production with minification for mini program
 npm run build
 
-# build for production with minification for H5 pages
+# build pages for production with minification for H5 program
 npm run buildH5
 
-# build for production and view the bundle analyzer report
-npm run build --report
+# build node resource for server
+gulp build
+
 ```
 
 ## 重要！！！
@@ -47,27 +48,33 @@ npm run build --report
 
 * 使用 `Vue.js` 构建移动端应用
 * 使用 `mpvue` 复用代码构建小程序应用
+* 使用 `Koa` 构建服务端
 * 使用 [Vuex](https://github.com/vuejs/vuex) 数据管理方案，方便构建复杂应用
 * 使用 [webpack](https://github.com/webpack/webpack) 构建机制：自定义构建策略、开发阶段 hotReload
 * 支持使用 [npm](https://github.com/npm/npm) 外部依赖
-* 使用 `Koa` 构建服务端
 
 ## 前后端分离
 
 ```bash
 # 启动前端--小程序
 npm run dev
+
 # 启动前端--H5
 npm run devH5
+
 # 启动后台
 npm run server
 ```
-*（服务端代码仅位于项目server文件夹下）*
+*（服务端代码仅位于项目server文件夹下,可根据自身需求进行拆分）*
 
 ## 插件
 
+- [gulp](https://www.gulpjs.com.cn/)
+ is a toolkit for automating painful or time-consuming tasks in your development workflow, so you can stop messing around and build something.
+
 - [Echarts](https://github.com/apache/incubator-echarts) 
 一个使用 JavaScript 实现的开源可视化库，可以流畅的运行在 PC 和移动设备上，兼容当前绝大部分浏览器（IE8/9/10/11，Chrome，Firefox，Safari等），底层依赖轻量级的矢量图形库 ZRender，提供直观，交互丰富，可高度个性化定制的数据可视化图表。
+
 - [Day.js](https://github.com/iamkun/dayjs) 
 一个轻量的处理时间和日期的 JavaScript 库，和 Moment.js 的 API 设计保持完全一样. 如果您曾经用过 Moment.js, 那么您已经知道如何使用 Day.js
 
@@ -79,6 +86,7 @@ npm run server
 
 ## Contribution
 
+![master_head](https://avatars2.githubusercontent.com/u/31007223?s=400&u=2c4493300c0ff4a4362a737945e9cd63c015d7ae&v=4)
 [RuShi](https://github.com/zz570557024)
 
 ## License
