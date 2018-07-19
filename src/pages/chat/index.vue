@@ -218,7 +218,7 @@ export default {
     created () {
         this.getUserInfo()
         this.getQuestion()
-        this.autoReload()
+        //this.autoReload() 定时刷新问题列表
     }
 }
 

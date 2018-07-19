@@ -50,15 +50,15 @@ export default class Kline {
   }
   getTimeDate(service, data = {}) {
     let option = {
-      url: '/api/stockInformationAPI/timeShareDaily',
-      methods: 'POST',
+      url: '/liang/stock/timeShareDaily',
+      methods: 'GET',
       data: {
         code: data.code || '000002',
         type: '14901',
         incr: '0',
         dt: '09:30:00'
       },
-      type: 1
+      type: 0
     }
     return service.httpRequest(option)
   }

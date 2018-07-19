@@ -1,10 +1,8 @@
 # 股票机器人
 
-## 前端（移动端&小程序）+ 后端（nodejs） 
+## 前端（移动端&小程序/后端（nodejs） 
 
- **前端: Vue + Mpvue** *（支持移动端与小程序）*
-
- **后端: koa** *（使用Koa2开发服务端）*
+ *前端: Vue + Mpvue（支持移动端与小程序）;后端: koa（使用Koa2开发服务端）*
 
 > [Vue](https://cn.vuejs.org/) 是一套用于构建用户界面的渐进式框架。`Vue` 的核心库只关注视图层，不仅易于上手，还便于与第三方库或既有项目整合。另一方面，当与现代化的工具链以及各种支持类库结合使用时，`Vue` 也完全能够为复杂的单页应用提供驱动。
 
@@ -14,7 +12,7 @@
 
 ## 简介
 
-> [一个同时支持移动端与小程序的聊天机器人](https://www.jianshu.com/p/91e566bfeedf)
+> [一个使用node服务同时支持移动端与小程序的聊天机器人](https://www.jianshu.com/p/91e566bfeedf)
 
 ## Build Setup
 
@@ -39,20 +37,6 @@ gulp build
 
 ```
 
-## 重要！！！
-
-- 请在`project.config.json`文件,`appid`处填写自己注册的微信appid;
-- [echarts-for-weixin](https://github.com/ecomfe/echarts-for-weixin)**支持微信版本 >= 6.6.3，对应基础库版本 >= 1.9.91**。
-
-## 特性
-
-* 使用 `Vue.js` 构建移动端应用
-* 使用 `mpvue` 复用代码构建小程序应用
-* 使用 `Koa` 构建服务端
-* 使用 [Vuex](https://github.com/vuejs/vuex) 数据管理方案，方便构建复杂应用
-* 使用 [webpack](https://github.com/webpack/webpack) 构建机制：自定义构建策略、开发阶段 hotReload
-* 支持使用 [npm](https://github.com/npm/npm) 外部依赖
-
 ## 前后端分离
 
 ```bash
@@ -66,6 +50,21 @@ npm run devH5
 npm run server
 ```
 *（服务端代码仅位于项目server文件夹下,可根据自身需求进行拆分）*
+
+## 重要！！！
+
+- 请在`project.config.json`文件,`appid`处填写自己注册的微信`appid`;
+- [echarts-for-weixin](https://github.com/ecomfe/echarts-for-weixin)**支持微信版本 >= 6.6.3，对应基础库版本 >= 1.9.91**。
+
+## 特性
+
+* 使用 `Vue.js` 构建移动端应用
+* 使用 `mpvue` 复用代码构建小程序应用
+* 使用 `Koa` 构建服务端
+* 使用 [Vuex](https://github.com/vuejs/vuex) 数据管理方案，方便构建复杂应用
+* 使用 [webpack](https://github.com/webpack/webpack) 构建机制：自定义构建策略、开发阶段 hotReload
+* 支持使用 [npm](https://github.com/npm/npm) 外部依赖
+* 使用[OLAMI](https://cn.olami.ai/open/website/home/home_show)人工智能开放平台自然语言语义理解 API
 
 ## 插件
 

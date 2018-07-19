@@ -16,6 +16,9 @@ class stockController {
   timeShareWeek() {
     return testData.timeShareWeek;
   }
+  timeShareDaily() {
+    return testData.timeShareDaily;
+  }
   stockNews() {
     return testData.stockNews;
   }

@@ -18,9 +18,6 @@ export default {
         case 0:
           options.url = 'http://127.0.0.1:8000' + options.url.split('/liang')[1];
           break;
-        case 1:
-          options.url = 'http://www.liangplus.com' + options.url.split('/api')[1];
-          break;
         default:
           break;
       }

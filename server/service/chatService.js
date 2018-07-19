@@ -29,10 +29,6 @@ class chatController {
   }
   async getAnswer(ctx) {
     switch (ctx.query.question) {
-      case '今天星期几':
-        return {
-          message: testData.date
-        }
       case '单支股票':
         return {
           message: testData.stock
@@ -40,10 +36,6 @@ class chatController {
       case '股票列表':
         return {
           message: testData.stockList
-        }
-      case '你好':
-        return {
-          message: testData.hello
         }
       case '讲个故事':
         return {

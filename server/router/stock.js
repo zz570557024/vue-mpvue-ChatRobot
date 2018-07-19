@@ -45,6 +45,14 @@ router.get('/timeShareWeek', async (ctx, next) => {
   }
 })
 
+router.get('/timeShareDaily', async (ctx, next) => {
+  try {
+    ctx.body = stockService.timeShareDaily(ctx);
+  } catch (err) {
+    log.info(err)
+  }
+})
+
 router.get('/stockNews', async (ctx, next) => {
   try {
     ctx.body = stockService.stockNews(ctx);

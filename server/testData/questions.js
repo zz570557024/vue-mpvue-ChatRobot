@@ -24,7 +24,7 @@ const stockList = {
     name: '万科',
     price: '23.46',
     code: '000002',
-    inc: '-0.69',
+    inc: '0.69',
     inc_value: '-2.86',
     indication_value: ['3.25%']
   }, {
@@ -38,7 +38,7 @@ const stockList = {
     name: '中国石油',
     price: '7.59',
     code: '601857',
-    inc: '-2.19',
+    inc: '2.19',
     inc_value: '-0.17',
     indication_value: ['0.01%']
   }, {
@@ -52,7 +52,7 @@ const stockList = {
     name: '贵州茅台',
     price: '719.58',
     code: '600519',
-    inc: '-0.85',
+    inc: '0.85',
     inc_value: '-6.18',
     indication_value: ['0.19%']
   }],

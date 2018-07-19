@@ -12,12 +12,6 @@ module.exports = {
         pathRewrite: {
           "^/liang": ''
         }
-      },
-      '/api': {
-        target: 'http://www.liangplus.com',
-        pathRewrite: {
-          "^/api": ''
-        }
       }
     }
   },
