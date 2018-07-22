@@ -1,6 +1,6 @@
 # 股票机器人
 
-## 前端（移动端&小程序/后端（nodejs） 
+## 前端（移动端&小程序）/后端（nodejs） 
 
  *前端 : Vue + Mpvue（支持移动端与小程序） ; 后端 : koa（使用Koa2开发服务端）*
 
@@ -40,21 +40,21 @@ gulp build
 ## 前后端分离
 
 ```bash
-# 启动小程序
+# start mini progrom
 npm run dev
 
-# 启动H5
+# start H5 pages
 npm run devH5
 
-# 启动后台
+# start server
 npm run server
 ```
-*（服务端代码仅位于项目server文件夹下,可根据自身需求进行拆分）*
+*（服务端代码仅位于项目`server`文件夹下,可根据自身需求进行拆分）*
 
 ## 重要！！！
 
-- 请在`project.config.json`文件,`appid`处填写自己注册的微信`appid`;
-- [echarts-for-weixin](https://github.com/ecomfe/echarts-for-weixin)**支持微信版本 >= 6.6.3，对应基础库版本 >= 1.9.91**。
+- 请在`project.config.json`文件,`appid`处填写自己的微信开发账号`appid`;
+- [echarts-for-weixin](https://github.com/ecomfe/echarts-for-weixin)支持微信版本 >= 6.6.3，对应基础库版本 >= 1.9.91。
 
 ## 特性
 
@@ -84,8 +84,6 @@ npm run server
 ![移动端](./static/res/readmeImg/demo_web.gif)     ![小程序](./static/res/readmeImg/demo_wx.gif)
 
 ## Contribution
-
-![master_head](./static/res/img/head_2.jpg)
 
 [RuShi](https://github.com/zz570557024)
 
