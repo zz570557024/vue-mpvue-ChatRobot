@@ -9,10 +9,7 @@ export default class Kline {
       methods: 'GET',
       data: {
         code: data.code || '000002',
-        type: '14901',
-        adjusted: '',
-        from: dateFrom,
-        to: dateTo
+        type: '14901'
       },
       type: 0
     }
@@ -24,10 +21,7 @@ export default class Kline {
       methods: 'GET',
       data: {
         code: data.code || '000002',
-        type: '14901',
-        adjusted: '',
-        from: dateFrom,
-        to: dateTo
+        type: '14901'
       },
       type: 0
     }
@@ -39,10 +33,7 @@ export default class Kline {
       methods: 'GET',
       data: {
         code: data.code || '000002',
-        type: '14901',
-        adjusted: '',
-        from: dateFrom,
-        to: dateTo
+        type: '14901'
       },
       type: 0
     }
@@ -54,9 +45,7 @@ export default class Kline {
       methods: 'GET',
       data: {
         code: data.code || '000002',
-        type: '14901',
-        incr: '0',
-        dt: '09:30:00'
+        type: '14901'
       },
       type: 0
     }
@@ -68,9 +57,7 @@ export default class Kline {
       methods: 'GET',
       data: {
         code: data.code || '000002',
-        type: '14901',
-        incr: '0',
-        dt: ''
+        type: '14901'
       },
       type: 0
     }
@@ -95,9 +82,7 @@ export default class Kline {
       url: '/liang/stock/stockNews',
       methods: 'GET',
       data: {
-        code: data.code,
-        page: data.page || 1,
-        count: data.count || 10
+        code: data.code
       },
       type: 0
     }
@@ -109,9 +94,7 @@ export default class Kline {
       url: '/liang/stock/stockAnnouncement',
       methods: 'GET',
       data: {
-        code: data.code,
-        page: data.page || 1,
-        count: data.count || 10
+        code: data.code
       },
       type: 0
     }
@@ -123,9 +106,7 @@ export default class Kline {
       url: '/liang/stock/stockReport',
       methods: 'GET',
       data: {
-        code: data.code,
-        page: data.page || 1,
-        count: data.count || 10
+        code: data.code
       },
       type: 0
     }

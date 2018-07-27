@@ -4,9 +4,6 @@ module.exports = {
     host: '0.0.0.0',
     port: 8080,
     proxyTable: {
-      //   '/**/*.api': "http://192.168.1.65:8188",
-      //   '/**/*.cms': "http://47.98.18.135:8081",
-      //   '/static': "http://192.168.1.65:8200",
       '/liang': {
         target: 'http://127.0.0.1:8000',
         pathRewrite: {
